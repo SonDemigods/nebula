@@ -6,6 +6,8 @@ import type { InternalAxiosRequestConfig, AxiosResponse } from 'axios';
 import type { ApiResponse } from './http.interface'; 
 // 导入config文件
 import { config } from '../config';
+// 导入storage工具函数
+import { localStorageUtil } from './storage';
 
 // 创建axios实例
 const service = axios.create({
@@ -18,9 +20,9 @@ service.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     // 在发送请求之前做些什么
     // 例如：添加token
-    const token = localStorage.getItem('token');
+    const token = localStorageUtil.getItem('token');
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+      config.headers.token = token;
     }
     return config;
   },
