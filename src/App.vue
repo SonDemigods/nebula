@@ -1,5 +1,8 @@
 <template>
-  <Layout />
+  <router-view v-if="!$route.meta.requiresAuth"></router-view>
+  <Layout v-else>
+    <router-view></router-view>
+  </Layout>
 </template>
 
 <script lang="ts">
