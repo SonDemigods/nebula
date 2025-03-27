@@ -10,21 +10,15 @@ import ErrorUnknown from '@/views/error/unknown.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/403',
-    name: '403',
-    component: Error403,
-    meta: { requiresAuth: false } // 不需要布局组件
+    path: '/',
+    name: 'Home',
+    component: Home,
+    meta: { requiresAuth: true } // 需要布局组件
   },
   {
-    path: '/404',
-    name: '404',
-    component: Error404,
-    meta: { requiresAuth: false } // 不需要布局组件
-  },
-  {
-    path: '/500',
-    name: '500',
-    component: Error500,
+    path: '/login',
+    name: 'Login',
+    component: Login,
     meta: { requiresAuth: false } // 不需要布局组件
   },
   {
@@ -34,17 +28,23 @@ const routes: Array<RouteRecordRaw> = [
     meta: { requiresAuth: false } // 不需要布局组件
   },
   {
-    path: '/login',
-    name: 'Login',
-    component: Login,
+    path: '/500',
+    name: '500',
+    component: Error500,
     meta: { requiresAuth: false } // 不需要布局组件
   },
   {
-    path: '/',
-    name: 'Home',
-    component: Home,
-    meta: { requiresAuth: true } // 需要布局组件
-  }
+    path: '/403',
+    name: '403',
+    component: Error403,
+    meta: { requiresAuth: false } // 不需要布局组件
+  },
+  {
+    path: '/:catchAll(.*)', // 匹配所有未定义的路径
+    name: '404',
+    component: Error404,
+    meta: { requiresAuth: false } // 不需要布局组件
+  },
 ];
 
 const router = createRouter({
