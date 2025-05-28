@@ -3,9 +3,9 @@
 </template>
 
 <script lang="ts" setup>
-// 引入vue
+// 导入依赖
 import { computed } from 'vue';
-// 引入图标
+// 导入全部图标
 import * as icons from '@ant-design/icons-vue';
 
 // 接收图标名称
