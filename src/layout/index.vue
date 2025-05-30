@@ -5,7 +5,6 @@
       theme="dark"
       breakpoint="lg"
       v-model:collapsed="collapsed"
-      collapsible
       collapsedWidth="60"
     >
       <div class="logo" />
@@ -18,7 +17,10 @@
       />
     </a-layout-sider>
     <a-layout-content>
-      <Header />
+      <Header
+        :suderCollapsed="collapsed"
+        @update:sudercollapseChange="handleCollapseChange"
+      />
       <Main />
       <Footer />
     </a-layout-content>
@@ -106,6 +108,11 @@ const handleMenuSelect = ({ key = '' }: { key: string }) => {
 
 // 定义侧边栏折叠状态
 const collapsed = ref<boolean>(false);
+
+// 处理侧边栏折叠事件
+const handleCollapseChange = (val: boolean) => {
+  collapsed.value = val;
+};
 </script>
 <style>
 .logo {
