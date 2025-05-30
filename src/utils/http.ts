@@ -12,7 +12,7 @@ import { localStorageUtil } from './storage';
 // 创建axios实例
 const service = axios.create({
   baseURL: config.baseURL, // 使用从config.ts导入的baseURL
-  timeout: 5000 // 请求超时时间
+  timeout: 10000 // 请求超时时间
 });
 
 // 请求拦截器
