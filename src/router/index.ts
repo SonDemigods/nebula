@@ -13,37 +13,37 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     name: 'Home',
     component: Home,
-    meta: { requiresAuth: true, title: '首页', icon: 'home-icon' } // 添加图标和标题
+    meta: { requiresAuth: true, title: '首页', icon: 'HomeOutlined' } // 添加图标和标题
   },
   {
     path: '/login',
     name: 'Login',
     component: Login,
-    meta: { requiresAuth: false, title: '登录', icon: 'login-icon' } // 添加图标和标题
+    meta: { requiresAuth: false, title: '登录', icon: 'LoginOutlined' } // 添加图标和标题
   },
   {
     path: '/unknown',
     name: 'unknown',
     component: ErrorUnknown,
-    meta: { requiresAuth: false, title: '未知错误', icon: 'error-icon' } // 添加图标和标题
+    meta: { requiresAuth: false, title: '未知错误', icon: 'QuestionOutlined' } // 添加图标和标题
   },
   {
     path: '/500',
     name: '500',
     component: Error500,
-    meta: { requiresAuth: false, title: '服务器错误', icon: 'error-icon' } // 添加图标和标题
+    meta: { requiresAuth: false, title: '服务器错误', icon: 'CloseCircleOutlined' } // 添加图标和标题
   },
   {
     path: '/403',
     name: '403',
     component: Error403,
-    meta: { requiresAuth: false, title: '禁止访问', icon: 'error-icon' } // 添加图标和标题
+    meta: { requiresAuth: false, title: '禁止访问', icon: 'StopOutlined' } // 添加图标和标题
   },
   {
     path: '/:catchAll(.*)', // 匹配所有未定义的路径
     name: '404',
     component: Error404,
-    meta: { requiresAuth: false, title: '页面未找到', icon: 'error-icon' } // 添加图标和标题
+    meta: { requiresAuth: false, title: '页面未找到', icon: 'QuestionCircleOutlined' } // 添加图标和标题
   },
 ];
 
