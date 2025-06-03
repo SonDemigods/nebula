@@ -3,7 +3,7 @@ import axios from 'axios';
 // 导入axios接口
 import type { InternalAxiosRequestConfig, AxiosResponse } from 'axios';
 // 导入ApiResponse接口
-import type { ApiResponse } from './http.interface'; 
+import type { ApiResponse } from '../interface/http.interface'; 
 // 导入config文件
 import { config } from '../config';
 // 导入storage工具函数
