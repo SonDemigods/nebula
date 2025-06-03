@@ -1,55 +1,71 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import type { RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router';
+import type { RouteRecordRaw } from 'vue-router';
 
-import Login from '@/views/login.vue';
-import Home from '@/views/home.vue';
-import Error403 from '@/views/error/403.vue';
-import Error404 from '@/views/error/404.vue';
-import Error500 from '@/views/error/500.vue';
-import ErrorUnknown from '@/views/error/unknown.vue';
+// 导入路由配置
+import viewConfig from './view.config';
+// 动态加载 views 文件夹下的所有 .vue 文件
+const modules = import.meta.glob('@/views/**/*.vue');
 
-const routes: Array<RouteRecordRaw> = [
+// 动态生成路由配置
+const dynamicRoutes: RouteRecordRaw[] = [];
+for (const path in modules) {
+  const fileName = path.match(/\/([^/]+)\.vue$/)?.[1];
+  if (fileName) {
+    dynamicRoutes.push({
+      path: `/${fileName}`,
+      name: fileName,
+      component: modules[path],
+      meta: viewConfig[fileName]
+    });
+  }
+}
+
+// 静态路由
+const staticRoutes: RouteRecordRaw[] = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
-    meta: { requiresAuth: true, title: '首页', icon: 'HomeOutlined' } // 添加图标和标题
+    name: 'home',
+    component: () => import('@/views/home.vue'),
+    meta: { requiresAuth: true, title: '首页', icon: 'HomeOutlined' },
   },
   {
     path: '/login',
-    name: 'Login',
-    component: Login,
-    meta: { requiresAuth: false, title: '登录', icon: 'LoginOutlined' } // 添加图标和标题
+    name: 'login',
+    component: () => import('@/views/login.vue'),
+    meta: { requiresAuth: false, title: '登录', icon: 'LoginOutlined' },
   },
   {
     path: '/unknown',
     name: 'unknown',
-    component: ErrorUnknown,
-    meta: { requiresAuth: false, title: '未知错误', icon: 'QuestionOutlined' } // 添加图标和标题
+    component: () => import('@/views/error/unknown.vue'),
+    meta: { requiresAuth: false, title: '未知错误', icon: 'QuestionOutlined' },
   },
   {
     path: '/500',
     name: '500',
-    component: Error500,
-    meta: { requiresAuth: false, title: '服务器错误', icon: 'CloseCircleOutlined' } // 添加图标和标题
+    component: () => import('@/views/error/500.vue'),
+    meta: { requiresAuth: false, title: '服务器错误', icon: 'CloseCircleOutlined' },
   },
   {
     path: '/403',
     name: '403',
-    component: Error403,
-    meta: { requiresAuth: false, title: '禁止访问', icon: 'StopOutlined' } // 添加图标和标题
+    component: () => import('@/views/error/403.vue'),
+    meta: { requiresAuth: false, title: '禁止访问', icon: 'StopOutlined' },
   },
   {
-    path: '/:catchAll(.*)', // 匹配所有未定义的路径
+    path: '/:catchAll(.*)',
     name: '404',
-    component: Error404,
-    meta: { requiresAuth: false, title: '页面未找到', icon: 'QuestionCircleOutlined' } // 添加图标和标题
+    component: () => import('@/views/error/404.vue'),
+    meta: { requiresAuth: false, title: '页面未找到', icon: 'QuestionCircleOutlined' },
   },
 ];
 
+// 合并动态路由和静态路由
+const routes: RouteRecordRaw[] = [...dynamicRoutes, ...staticRoutes];
+
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
+  routes,
 });
 
 export default router;
