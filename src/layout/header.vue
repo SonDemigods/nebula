@@ -71,10 +71,13 @@ watch(
 );
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .header {
+  position: fixed;
+  top: 0;
+  width: 100%;
   background-color: #fff !important;
-  padding: 0 16px !important;
+  padding: 0 10px !important;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 }
 

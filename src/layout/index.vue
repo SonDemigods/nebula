@@ -22,7 +22,7 @@
         @update:sudercollapseChange="handleCollapseChange"
       />
       <Main />
-      <Footer />
+      <!-- <Footer /> -->
     </a-layout-content>
   </a-layout>
 </template>
@@ -114,7 +114,7 @@ const handleCollapseChange = (val: boolean) => {
   collapsed.value = val;
 };
 </script>
-<style>
+<style lang="less" scoped>
 .logo {
   height: 32px;
   width: 100%;
