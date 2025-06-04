@@ -15,6 +15,7 @@ const props = defineProps<{
 
 // 动态获取图标组件
 const iconComponent = computed(() => {
-  return icons[props.iconName] || null;
+  const icon = (icons as Record<string, any>)[props.iconName];
+  return icon || null;
 });
 </script>
