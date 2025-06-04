@@ -18,8 +18,8 @@
     </a-layout-sider>
     <a-layout-content>
       <Header
-        :suderCollapsed="collapsed"
-        @update:sudercollapseChange="handleCollapseChange"
+        :menuCollapsed="collapsed"
+        @update:menuCollapseChange="handleCollapseChange"
       />
       <Main />
       <!-- <Footer /> -->

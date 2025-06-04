@@ -2,9 +2,9 @@
   <a-layout-header class="header">
     <div class="collapsed-btn" @click="handleHeaderSelect">
       <a-tooltip>
-        <template #title>{{ suderCollapsed ? '展开侧边栏' : '收起侧边栏' }}</template>
+        <template #title>{{ menuCollapsed ? '展开侧边栏' : '收起侧边栏' }}</template>
         <dynamicIcon
-          :iconName="suderCollapsed ? 'MenuUnfoldOutlined' : 'MenuFoldOutlined'"
+          :iconName="menuCollapsed ? 'MenuUnfoldOutlined' : 'MenuFoldOutlined'"
         />
       </a-tooltip>
     </div>
@@ -35,14 +35,14 @@ import { useRoute, useRouter } from 'vue-router';
 import dynamicIcon from '@/components/dynamicIcon.vue';
 
 // 接收父组件传递的参数
-const props = defineProps<{ suderCollapsed: boolean }>();
+const props = defineProps<{ menuCollapsed: boolean }>();
 // 定义自定义事件
 const emit = defineEmits<{
-  (e: 'update:sudercollapseChange', value: boolean): void;
+  (e: 'update:menuCollapseChange', value: boolean): void;
 }>();
 // 更新侧边菜单的折叠状态
 const handleHeaderSelect = () => {
-  emit('update:sudercollapseChange', !props.suderCollapsed);
+  emit('update:menuCollapseChange', !props.menuCollapsed);
 };
 
 // 定义基础路径
