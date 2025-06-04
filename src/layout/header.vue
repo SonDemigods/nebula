@@ -3,7 +3,7 @@
     <div class="collapsed-btn" @click="handleHeaderSelect">
       <a-tooltip>
         <template #title>{{ suderCollapsed ? '展开侧边栏' : '收起侧边栏' }}</template>
-        <DynamicIcon
+        <dynamicIcon
           :iconName="suderCollapsed ? 'MenuUnfoldOutlined' : 'MenuFoldOutlined'"
         />
       </a-tooltip>
@@ -14,11 +14,11 @@
         <span
           v-if="breadcrumbRoutes.indexOf(route) === breadcrumbRoutes.length - 1"
         >
-          <DynamicIcon :iconName="route.meta.icon" v-if="route.meta.icon" />
+          <dynamicIcon :iconName="route.meta.icon" v-if="route.meta.icon" />
           {{ route.meta.title }}
         </span>
         <router-link v-else :to="`${basePath}/${paths.join('/')}`">
-          <DynamicIcon :iconName="route.meta.icon" v-if="route.meta.icon" />
+          <dynamicIcon :iconName="route.meta.icon" v-if="route.meta.icon" />
           {{ route.meta.title }}
         </router-link>
       </template>
@@ -32,7 +32,7 @@ import { ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
 // 导入组件
-import DynamicIcon from '@/components/DynamicIcon.vue';
+import dynamicIcon from '@/components/dynamicIcon.vue';
 
 // 接收父组件传递的参数
 const props = defineProps<{ suderCollapsed: boolean }>();

@@ -35,7 +35,7 @@ import { ref, h } from 'vue';
 import type { ItemType } from 'ant-design-vue';
 
 // 导入组件
-import DynamicIcon from '@/components/DynamicIcon.vue';
+import dynamicIcon from '@/components/dynamicIcon.vue';
 import Header from './header.vue';
 import Main from './main.vue';
 import Footer from './footer.vue';
@@ -45,56 +45,56 @@ const menuList: ItemType[] = [
   {
     key: 'abc',
     label: '一级菜单1',
-    icon: h(DynamicIcon, { iconName: 'PieChartOutlined' })
+    icon: h(dynamicIcon, { iconName: 'PieChartOutlined' })
   },
   {
     key: 'bcd',
     label: '一级菜单2',
-    icon: h(DynamicIcon, { iconName: 'DesktopOutlined' })
+    icon: h(dynamicIcon, { iconName: 'DesktopOutlined' })
   },
   {
     key: 'cde',
     label: 'User',
-    icon: h(DynamicIcon, { iconName: 'UserOutlined' }),
+    icon: h(dynamicIcon, { iconName: 'UserOutlined' }),
     children: [
       {
         key: '3',
         label: 'Tom',
-        icon: h(DynamicIcon, { iconName: 'UserOutlined' })
+        icon: h(dynamicIcon, { iconName: 'UserOutlined' })
       },
       {
         key: '4',
         label: 'Bill',
-        icon: h(DynamicIcon, { iconName: 'UserOutlined' })
+        icon: h(dynamicIcon, { iconName: 'UserOutlined' })
       },
       {
         key: '5',
         label: 'Alex',
-        icon: h(DynamicIcon, { iconName: 'UserOutlined' })
+        icon: h(dynamicIcon, { iconName: 'UserOutlined' })
       }
     ]
   },
   {
     key: 'def',
     label: 'Team',
-    icon: h(DynamicIcon, { iconName: 'TeamOutlined' }),
+    icon: h(dynamicIcon, { iconName: 'TeamOutlined' }),
     children: [
       {
         key: '6',
         label: 'Team 1',
-        icon: h(DynamicIcon, { iconName: 'TeamOutlined' })
+        icon: h(dynamicIcon, { iconName: 'TeamOutlined' })
       },
       {
         key: '8',
         label: 'Team 2',
-        icon: h(DynamicIcon, { iconName: 'TeamOutlined' })
+        icon: h(dynamicIcon, { iconName: 'TeamOutlined' })
       }
     ]
   },
   {
     key: 'efg',
     label: 'File',
-    icon: h(DynamicIcon, { iconName: 'FileOutlined' })
+    icon: h(dynamicIcon, { iconName: 'FileOutlined' })
   }
 ];
 
