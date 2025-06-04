@@ -1,5 +1,5 @@
 // 导入类型
-import type { ViewMeta } from '../interface/viewMeta.interface';
+import type { ViewMeta } from '@/interface/viewMeta.interface';
 
 // 定义页面元数据配置
 const config: ViewMeta = {
